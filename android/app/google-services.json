@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "720368725330",
+    "project_id": "loakin-acee2",
+    "storage_bucket": "loakin-acee2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720368725330:android:47200ae49ec1e73c1d5e8b",
+        "android_client_info": {
+          "package_name": "com.example.loakin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720368725330-5lhu65qmdob4jctkaneq6usdedqldblj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBICB3Uc2kJYMqnPQs18oqL5KgTW2_Efos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720368725330-5lhu65qmdob4jctkaneq6usdedqldblj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
