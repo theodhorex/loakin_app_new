@@ -56,7 +56,9 @@ class _AddPageState extends State<AddPage> {
     conditions = value;
   }
 
-  // Select File To Upload
+  // Select File To Locale Upload
+
+  // Select File To Upload "Firebase"
   Future selectFile() async {
     final result = await FilePicker.platform.pickFiles();
     if (result == null) return;
@@ -73,6 +75,12 @@ class _AddPageState extends State<AddPage> {
 
     final ref = FirebaseStorage.instance.ref().child(path);
     ref.putFile(file);
+  }
+
+  void _getImage() async {
+    final ref = FirebaseStorage.instance.ref().child('files/');
+    var url = await ref.getDownloadURL();
+    print(url);
   }
 
   @override
@@ -472,14 +480,17 @@ class _AddPageState extends State<AddPage> {
               SizedBox(
                 height: 20,
               ),
-              FlatButton(onPressed: _onClick2, child: Text("print")),
+              IconButton(onPressed: _getImage, icon: Icon(Icons.alarm)),
               FlatButton(
                 minWidth: 350,
                 height: 55,
                 color: AppColors.color1,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
-                child: BigText(text: "Post It!"),
+                child: BigText(
+                  text: "Post It!",
+                  color: Colors.white,
+                ),
                 onPressed: () async {
                   final prices = int.parse(price.text);
                   PostinganModel posti = PostinganModel(

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:loakin/asset/colors.dart';
@@ -7,6 +8,7 @@ import 'package:loakin/asset/widgets/big_text.dart';
 import 'package:loakin/asset/widgets/icon_category.dart';
 import 'package:loakin/asset/widgets/item_list_page.dart';
 import 'package:loakin/home/recommend_item.dart';
+import 'package:loakin/model/user_model.dart';
 
 class PageBody extends StatefulWidget {
   const PageBody({Key? key}) : super(key: key);
@@ -18,6 +20,8 @@ class PageBody extends StatefulWidget {
 class _PageBodyState extends State<PageBody> {
   final Stream<QuerySnapshot> postingan =
       FirebaseFirestore.instance.collection('postingan').snapshots();
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel? loggedInUser;
   @override
   Widget build(BuildContext context) {
     return Column(
