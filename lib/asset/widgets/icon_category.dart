@@ -37,9 +37,11 @@ class CategoryIcon extends StatelessWidget {
         SizedBox(
           height: 7,
         ),
-        SmallText(
-          text: text.toUpperCase(),
-          color: Color.fromARGB(255, 121, 116, 116),
+        Container(
+          child: SmallText(
+            text: text.toUpperCase(),
+            color: Color.fromARGB(255, 121, 116, 116),
+          ),
         )
       ],
     );

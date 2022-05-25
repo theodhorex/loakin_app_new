@@ -63,10 +63,10 @@ class _SignInState extends State<SignIn> {
       validator: (value) {
         RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
-          return ("Password is required!!");
+          return ("Kata sandi diperlukan!");
         }
         if (!regex.hasMatch(value)) {
-          return ("Please enter valid password (Min. 6 Character)");
+          return ("Tolong masukan kata sandi yang valid (Min. 6 Karakter)");
         }
       },
       onSaved: (value) {
@@ -76,7 +76,7 @@ class _SignInState extends State<SignIn> {
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.vpn_key),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Password",
+          hintText: "Kata Sandi",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
     );
 
@@ -92,7 +92,7 @@ class _SignInState extends State<SignIn> {
           signIn(emailController.text, passwordController.text);
         },
         child: BigText(
-          text: "Sign In",
+          text: "Masuk",
           color: Colors.white,
           size: 20,
         ),
@@ -139,7 +139,7 @@ class _SignInState extends State<SignIn> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't have an account? ",
+                          "Tidak memiliki akun? ",
                           style: TextStyle(color: Colors.black, fontSize: 13),
                         ),
                         GestureDetector(
@@ -150,7 +150,7 @@ class _SignInState extends State<SignIn> {
                                     builder: (context) => SignUp()));
                           },
                           child: Text(
-                            "Sign Up ",
+                            "Daftar ",
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 13,
@@ -175,7 +175,7 @@ class _SignInState extends State<SignIn> {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((uid) => {
-                Fluttertoast.showToast(msg: "Sign In Successful"),
+                Fluttertoast.showToast(msg: "Berhasil Masuk!"),
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => FinalMainScreen())),
               })

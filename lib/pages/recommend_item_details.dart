@@ -59,10 +59,9 @@ class RecommendItemDetails extends StatelessWidget {
                           height: 800,
                           child: Center(
                             child: IconAndTextDetail(
-                                title:
-                                    "Kaktus Busuk Versi 2.3.2 Retro Production Special Edition Year 3012 Made By UFO",
-                                price: 30000,
-                                user: "Theodhore"),
+                                title: "DG BALLS",
+                                price: 500000,
+                                user: "Theodhore Riyanto"),
                           )))
                 ],
               ),
@@ -113,7 +112,7 @@ class RecommendItemDetails extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           BigText(
-                            text: "Make Offer",
+                            text: "Buat Penawaran",
                             color: Colors.white,
                             fw: FontWeight.w700,
                           )

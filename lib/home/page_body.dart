@@ -22,6 +22,18 @@ class _PageBodyState extends State<PageBody> {
       FirebaseFirestore.instance.collection('postingan').snapshots();
   User? user = FirebaseAuth.instance.currentUser;
   UserModel? loggedInUser;
+  Future _getUser() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      print("object");
+      loggedInUser = UserModel.fromMap(value.data());
+    });
+    return "logged!";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -49,18 +61,13 @@ class _PageBodyState extends State<PageBody> {
                       blurRadius: 5.0,
                       offset: Offset(0, 5))
                 ]),
-            child: PageView.builder(
-              itemCount: 2,
-              itemBuilder: (context, position) {
-                return CategoryItem();
-              },
-            )),
+            child: CategoryItem()),
         Column(
           children: [
             Container(
               margin: EdgeInsets.only(top: 20, bottom: 20, left: 20),
               child: Row(
-                children: [BigText(text: "Recommended For You")],
+                children: [BigText(text: "Rekomendasi Untukmu")],
               ),
             ),
             Container(
@@ -72,7 +79,7 @@ class _PageBodyState extends State<PageBody> {
                     return Text("Error Tod");
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text("Loading Bodat");
+                    return Text("Loading ...");
                   }
 
                   final data = snapshot.requireData;
@@ -87,7 +94,7 @@ class _PageBodyState extends State<PageBody> {
                         title: "${data.docs[index]['title']}",
                         price: "${data.docs[index]['price']}",
                         cond: "New",
-                        user: "Theodhore.com",
+                        user: "Theodhore Riyanto",
                       );
                     },
                   );

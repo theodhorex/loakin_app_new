@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:loakin/asset/widgets/big_text.dart';
 import 'package:loakin/home/final_mainscreen.dart';
 import 'package:loakin/model/categorydata.dart';
 import 'package:loakin/model/postingan_model.dart';
+import 'package:loakin/model/user_model.dart';
 import 'package:loakin/pages/postcategory.dart';
 
 import 'package:loakin/asset/colors.dart';
@@ -31,8 +33,8 @@ class _AddPageState extends State<AddPage> {
 
   // Array
   List<Map<String, dynamic>> data = [
-    {'name': 'Mailing & Delivery', 'value': false},
-    {'name': 'Meet Up', 'value': false}
+    {'name': 'Pemesanan & Pengiriman', 'value': false},
+    {'name': 'COD', 'value': false}
   ];
 
   // Variables
@@ -44,6 +46,9 @@ class _AddPageState extends State<AddPage> {
   PlatformFile? pickedFile;
   final currencyFormatter =
       NumberFormat.currency(locale: 'ID', symbol: "Rp. ", decimalDigits: 0);
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel? loggedInUser;
+  var users;
 
   // Function
 
@@ -54,6 +59,18 @@ class _AddPageState extends State<AddPage> {
   void _onClick(String? value) {
     // Conditions Field Functions
     conditions = value;
+  }
+
+  Future _getUser() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      print("object");
+      loggedInUser = UserModel.fromMap(value.data());
+    });
+    return "logged!";
   }
 
   // Select File To Locale Upload
@@ -145,7 +162,7 @@ class _AddPageState extends State<AddPage> {
                 children: [
                   Padding(padding: EdgeInsets.only(left: 30)),
                   BigText(
-                    text: "Add Details",
+                    text: "Masukan Detail",
                     size: 25,
                     fw: FontWeight.w800,
                   ),
@@ -159,7 +176,7 @@ class _AddPageState extends State<AddPage> {
                     Row(
                       children: [
                         SmallText(
-                          text: "Category",
+                          text: "Kategori",
                           color: Colors.black,
                           size: 14,
                         ),
@@ -188,7 +205,7 @@ class _AddPageState extends State<AddPage> {
                             children: [
                               widget.category != null
                                   ? BigText(text: widget.category!.category)
-                                  : BigText(text: "This Is Category"),
+                                  : BigText(text: "Pilih Kategori"),
                               Icon(
                                 Icons.arrow_forward_ios,
                                 size: 17,
@@ -203,7 +220,7 @@ class _AddPageState extends State<AddPage> {
                     Row(
                       children: [
                         SmallText(
-                          text: "Listing Title",
+                          text: "Nama Barang",
                           color: Colors.black,
                           size: 14,
                         ),
@@ -222,7 +239,7 @@ class _AddPageState extends State<AddPage> {
                         child: TextField(
                           controller: title,
                           decoration: InputDecoration(
-                              hintText: "This Is Listing Title",
+                              hintText: "Masukan Nama Barang",
                               hintStyle: TextStyle(
                                   color: Color.fromARGB(255, 160, 160, 160)),
                               border: InputBorder.none),
@@ -237,7 +254,7 @@ class _AddPageState extends State<AddPage> {
                 children: [
                   Padding(padding: EdgeInsets.only(left: 30)),
                   BigText(
-                    text: "About The Items",
+                    text: "Tentang Barang",
                     size: 25,
                     fw: FontWeight.w800,
                   ),
@@ -253,7 +270,7 @@ class _AddPageState extends State<AddPage> {
                             Padding(
                                 padding: EdgeInsets.only(left: 30, top: 35)),
                             SmallText(
-                              text: "Conditions",
+                              text: "Kondisi",
                               color: Colors.black,
                               size: 14,
                             )
@@ -382,7 +399,7 @@ class _AddPageState extends State<AddPage> {
                           children: [
                             Padding(padding: EdgeInsets.only(left: 31)),
                             SmallText(
-                              text: "Price",
+                              text: "Harga",
                               color: Colors.black,
                               size: 14,
                             )
@@ -402,7 +419,7 @@ class _AddPageState extends State<AddPage> {
                             child: TextField(
                               controller: price,
                               decoration: InputDecoration(
-                                  hintText: "This Is Your Price!",
+                                  hintText: "Masukan Harga Barang!",
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(
                                       color:
@@ -415,7 +432,7 @@ class _AddPageState extends State<AddPage> {
                           children: [
                             Padding(padding: EdgeInsets.only(left: 31)),
                             SmallText(
-                              text: "Description",
+                              text: "Deskripsi Barang",
                               color: Colors.black,
                               size: 14,
                             )
@@ -436,7 +453,7 @@ class _AddPageState extends State<AddPage> {
                             maxLines: null,
                             keyboardType: TextInputType.multiline,
                             decoration: InputDecoration(
-                                hintText: "Write Your Desc Here",
+                                hintText: "Tulis Deskripsi Barang Disini",
                                 border: InputBorder.none,
                                 hintStyle: TextStyle(
                                     color: Color.fromARGB(255, 160, 160, 160))),
@@ -454,7 +471,7 @@ class _AddPageState extends State<AddPage> {
                 children: [
                   Padding(padding: EdgeInsets.only(left: 30)),
                   BigText(
-                    text: "Deal Method",
+                    text: "Metode Pembayaran",
                     size: 25,
                     fw: FontWeight.w800,
                   ),
@@ -480,7 +497,6 @@ class _AddPageState extends State<AddPage> {
               SizedBox(
                 height: 20,
               ),
-              IconButton(onPressed: _getImage, icon: Icon(Icons.alarm)),
               FlatButton(
                 minWidth: 350,
                 height: 55,
@@ -488,19 +504,19 @@ class _AddPageState extends State<AddPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
                 child: BigText(
-                  text: "Post It!",
+                  text: "Kirim Postingan!",
                   color: Colors.white,
                 ),
                 onPressed: () async {
                   final prices = int.parse(price.text);
                   PostinganModel posti = PostinganModel(
-                      image: pickedFile!.name,
-                      category: "First Post",
-                      title: title.text,
-                      conditions: conditions,
-                      price: currencyFormatter.format(prices),
-                      description: description.text,
-                      dealMethod: data);
+                      gambar: pickedFile!.name,
+                      kategori: "First Post",
+                      nama_barang: title.text,
+                      kondisi: conditions,
+                      harga: currencyFormatter.format(prices),
+                      deskripsi: description.text,
+                      metodePembayaran: data);
                   var ids = await post(posti);
                   await uploadFile();
                   title.clear();

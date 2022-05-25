@@ -48,10 +48,10 @@ class _SignUpState extends State<SignUp> {
       validator: (value) {
         RegExp regex = new RegExp(r'^.{3,}$');
         if (value!.isEmpty) {
-          return ("First Name cannot be empty!");
+          return ("Nama depan tidak boleh kosong!");
         }
         if (!regex.hasMatch(value)) {
-          return ("Enter valid name (Min. 3 Character)");
+          return ("Masukan nama yang valid (Min. 3 Karakter)");
         }
         return null;
       },
@@ -62,7 +62,7 @@ class _SignUpState extends State<SignUp> {
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.person_rounded),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "First Name",
+          hintText: "Nama Depan",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
     );
 
@@ -74,7 +74,7 @@ class _SignUpState extends State<SignUp> {
       validator: (value) {
         RegExp regex = new RegExp(r'^.{3,}$');
         if (value!.isEmpty) {
-          return ("Last Name cannot be empty!");
+          return ("Nama belakang tidak boleh kosong!");
         }
         if (!regex.hasMatch(value)) {
           return null;
@@ -87,7 +87,7 @@ class _SignUpState extends State<SignUp> {
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.person_rounded),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Last Name",
+          hintText: "Nama Belakang",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
     );
 
@@ -98,7 +98,7 @@ class _SignUpState extends State<SignUp> {
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value!.isEmpty) {
-          return ("Please enter your email!");
+          return ("Tolong masukan email yang valid!");
         }
         // Reg Expressions for Email Validation
         if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
@@ -113,7 +113,7 @@ class _SignUpState extends State<SignUp> {
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.mail),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Email Address",
+          hintText: "Email",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
     );
 
@@ -126,10 +126,10 @@ class _SignUpState extends State<SignUp> {
       validator: (value) {
         RegExp regex = new RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
-          return ("Password is required for login");
+          return ("Kata sandi dibutuhkan untuk masuk");
         }
         if (!regex.hasMatch(value)) {
-          return ("Enter a valid password (Min. 6 character)!");
+          return ("Masukan kata sandi yang valid! (Min. 6 Karakter)!");
         }
       },
       onSaved: (value) {
@@ -139,7 +139,7 @@ class _SignUpState extends State<SignUp> {
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.vpn_key),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Password",
+          hintText: "Kata Sandi",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
     );
 
@@ -152,7 +152,7 @@ class _SignUpState extends State<SignUp> {
       validator: (value) {
         if (confirmPasswordEditingController.text !=
             passwordEditingController.text) {
-          return ("Password don't match!");
+          return ("Kata sandi tidak cocok!");
         }
         return null;
       },
@@ -163,7 +163,7 @@ class _SignUpState extends State<SignUp> {
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.vpn_key),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Confirm Password",
+          hintText: "Konfirmasi kata sandi",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
     );
 
@@ -179,7 +179,7 @@ class _SignUpState extends State<SignUp> {
           signUp(emailEditingController.text, passwordEditingController.text);
         },
         child: BigText(
-          text: "Sign Up",
+          text: "Daftar",
           color: Colors.white,
           size: 20,
         ),
@@ -201,7 +201,7 @@ class _SignUpState extends State<SignUp> {
                     SizedBox(
                       height: 80,
                       child: Image.asset(
-                        "assets/image/logo.png",
+                        "assets/image/main_logo.png",
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -236,7 +236,7 @@ class _SignUpState extends State<SignUp> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Have an account? ",
+                          "Sudah memiliki akun? ",
                           style: TextStyle(color: Colors.black, fontSize: 13),
                         ),
                         GestureDetector(
@@ -247,7 +247,7 @@ class _SignUpState extends State<SignUp> {
                                     builder: (context) => SignIn()));
                           },
                           child: Text(
-                            "Sign In ",
+                            "Masuk ",
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 13,
@@ -297,7 +297,7 @@ class _SignUpState extends State<SignUp> {
         .collection("users")
         .doc(user.uid)
         .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Account created successfully!");
+    Fluttertoast.showToast(msg: "Akun Anda Berhasil Dibuat!");
 
     Navigator.pushAndRemoveUntil(
         (context),

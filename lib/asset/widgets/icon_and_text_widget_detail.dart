@@ -55,7 +55,7 @@ class IconAndTextDetail extends StatelessWidget {
           Row(
             children: [
               Padding(padding: EdgeInsets.only(left: 17)),
-              BigText(text: "Description"),
+              BigText(text: "Deskripsi"),
             ],
           ),
           SizedBox(
@@ -72,7 +72,7 @@ class IconAndTextDetail extends StatelessWidget {
                         icon: Icons.access_time_outlined,
                         iconColor: Color.fromARGB(193, 0, 0, 0)),
                     SmallText(
-                      text: "2 minutes ago by Theodhore.com",
+                      text: "oleh Theodhore Riyanto",
                       color: Colors.black,
                     )
                   ],
@@ -90,7 +90,7 @@ class IconAndTextDetail extends StatelessWidget {
                         icon: Icons.crop_3_2_outlined,
                         iconColor: Color.fromARGB(193, 0, 0, 0)),
                     SmallText(
-                      text: "Used",
+                      text: "Brand New",
                       color: Colors.black,
                     )
                   ],
@@ -108,7 +108,7 @@ class IconAndTextDetail extends StatelessWidget {
                         icon: Icons.note,
                         iconColor: Color.fromARGB(193, 0, 0, 0)),
                     SmallText(
-                      text: "FS !! TDP 38JT, Harga Kredit 160JT & Cash 175JT",
+                      text: "OK",
                       color: Colors.black,
                     )
                   ],
@@ -122,7 +122,7 @@ class IconAndTextDetail extends StatelessWidget {
           Row(
             children: [
               Padding(padding: EdgeInsets.only(left: 17)),
-              BigText(text: "Getting This"),
+              BigText(text: "Metode Pembayaran"),
             ],
           ),
           SizedBox(
@@ -139,7 +139,7 @@ class IconAndTextDetail extends StatelessWidget {
                         icon: Icons.handshake,
                         iconColor: Color.fromARGB(193, 0, 0, 0)),
                     SmallText(
-                      text: "Meet-Up",
+                      text: "COD",
                       color: Colors.black,
                     )
                   ],
@@ -168,12 +168,12 @@ class IconAndTextDetail extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Row(
-            children: [
-              Padding(padding: EdgeInsets.only(left: 17)),
-              BigText(text: "Meet The Seller"),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     Padding(padding: EdgeInsets.only(left: 17)),
+          //     BigText(text: "Meet The Seller"),
+          //   ],
+          // ),
           SizedBox(
             height: 10,
           ),

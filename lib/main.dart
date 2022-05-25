@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:loakin/home/final_mainscreen.dart';
 import 'package:loakin/pages/addpages.dart';
+import 'package:loakin/pages/after_splash.dart';
 import 'package:loakin/pages/profilepage.dart';
 import 'package:loakin/pages/recommend_item_detail.dart';
 import 'package:loakin/pages/recommend_item_details.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SignIn(),
+      home: AfterSplash(),
     );
   }
 }

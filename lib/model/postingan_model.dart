@@ -1,50 +1,54 @@
 class PostinganModel {
-  final String image;
-  final String category;
-  final String title;
-  final String conditions;
-  final String price;
-  final String description;
-  final List dealMethod;
+  final String gambar;
+  final String kategori;
+  final String nama_barang;
+  final String kondisi;
+  final String harga;
+  final String deskripsi;
+  final List metodePembayaran;
+  final String? pengguna;
 
   PostinganModel(
-      {required this.category,
-      required this.image,
-      required this.title,
-      required this.conditions,
-      required this.price,
-      required this.description,
-      required this.dealMethod});
+      {required this.kategori,
+      this.pengguna,
+      required this.gambar,
+      required this.nama_barang,
+      required this.kondisi,
+      required this.harga,
+      required this.deskripsi,
+      required this.metodePembayaran});
 
   static PostinganModel fromJson(Map<String, dynamic> json) {
     return PostinganModel(
-        image: json['image'],
-        category: json['category'],
-        title: json['title'],
-        conditions: json['conditions'],
-        price: json['price'],
-        description: json['description'],
-        dealMethod: json['dealMethod']);
+        gambar: json['gambar'],
+        kategori: json['kategori'],
+        nama_barang: json['nama_barang'],
+        kondisi: json['kondisi'],
+        harga: json['harga'],
+        deskripsi: json['deskripsi'],
+        metodePembayaran: json['metodePembayaran'],
+        pengguna: json['pengguna']);
   }
 
   Map<String, dynamic> toJson() {
-    List list = dealMethod.map((e) {
+    List list = metodePembayaran.map((e) {
       if (e["value"] != false) {
         return e;
       }
     }).toList();
 
-    // Remove null 
+    // Remove null
     // var l = list.removeWhere((element) => element == null);
 
     return {
-      "image": image,
-      "category": category,
-      "title": title,
-      "conditions": conditions,
-      "price": price,
-      "description": description,
-      "dealMethod": list
+      "image": gambar,
+      "category": kategori,
+      "title": nama_barang,
+      "conditions": kondisi,
+      "price": harga,
+      "description": deskripsi,
+      "dealMethod": list,
+      "user" : pengguna
     };
   }
 }

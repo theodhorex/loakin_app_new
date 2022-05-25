@@ -37,8 +37,6 @@ class _ProfilePageState extends State<ProfilePage> {
     return "logged!";
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,7 +130,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       BigText(
-                        text: "See Catalog",
+                        text: "Lihat Katalog",
                         fw: FontWeight.w700,
                         color: Colors.white,
                       ),
@@ -166,7 +164,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       size: 15,
                     ),
                     BigText(
-                      text: "Follower",
+                      text: "Pengikut",
                       fw: FontWeight.w700,
                       size: 15,
                     ),
@@ -189,7 +187,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       size: 15,
                     ),
                     BigText(
-                      text: "Rating",
+                      text: "Penilaian",
                       fw: FontWeight.w700,
                       size: 15,
                     ),
@@ -212,7 +210,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       size: 15,
                     ),
                     BigText(
-                      text: "Post",
+                      text: "Postingan",
                       fw: FontWeight.w700,
                       size: 15,
                     ),
@@ -232,7 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: 45,
                   ),
                   BigText(
-                    text: "About This Shop",
+                    text: "Tentang Pengguna",
                     fw: FontWeight.w700,
                   )
                 ],

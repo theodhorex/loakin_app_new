@@ -50,19 +50,19 @@ class _FinalMainScreenState extends State<FinalMainScreen> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Home',
+              label: 'Beranda',
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
               icon: Icon(Icons.add),
-              label: 'Add',
+              label: 'Postingan',
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
               icon: Icon(Icons.access_time_outlined),
-              label: 'Activity',
+              label: 'Aktivitas',
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: 'Profile',
+              label: 'Profil',
               backgroundColor: Colors.blue),
         ],
       ),

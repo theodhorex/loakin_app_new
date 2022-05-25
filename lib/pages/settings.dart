@@ -33,21 +33,35 @@ class _SettingssState extends State<Settingss> {
             InkWell(
               onTap: _signOut,
               child: Container(
+                padding: EdgeInsets.only(left: 20, right: 20),
                 width: 350,
-                height: 40,
+                height: 60,
                 decoration: BoxDecoration(
-                    color: AppColors.color1,
+                    color: Color.fromARGB(255, 241, 241, 241),
                     borderRadius: BorderRadius.circular(7)),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BigText(
-                      text: "Sign Out",
-                      color: Colors.white,
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.logout,
+                            color: AppColors.color1,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          BigText(
+                            text: "Keluar",
+                            color: Color.fromARGB(255, 77, 77, 77),
+                          ),
+                        ],
+                      ),
                     ),
                     Icon(
-                      Icons.arrow_right,
-                      color: Colors.white,
+                      Icons.arrow_forward_ios,
+                      color: Color.fromARGB(255, 160, 160, 160),
                     )
                   ],
                 ),
